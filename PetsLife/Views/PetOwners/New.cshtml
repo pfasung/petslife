@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "New Pet Owner";
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+}
+<script src="~/ViewModels/api.js"></script>
+<script src="~/ViewModels/PetOwners/New.js"></script>
+
+
+<div class="row">
+    <h2 style="text-align:center">Register new Pet Owner</h2>
+</div>
+
+
+<div class="row row-centered">
+    <div class="col-md-4 col-centered">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Register new Pet Owner</h2>
+            </div>
+            <div class="panel-body" data-bind="with: viewModel">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="inpFirstName">First Name</label>
+                        <input id="inpFirstName" type="text" class="form-control" data-bind="value: FirstName" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inpLastName">Last Name</label>
+                        <input id="inpLastName" type="text" class="form-control" data-bind="value: LastName" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inpEmailAddress">Email Address</label>
+                        <input id="inpEmailAddress" type="email" class="form-control" data-bind="value: EmailAddress" required="required" />
+                    </div>
+                </form>
+                <br />
+                <a class="btn btn-default" onclick="history.go(-1); return false;" href="#">cancel</a>
+                <a class="btn btn-primary" data-bind="click: save, attr: { 'href': '@Url.Action("Edit", "PetOwners")/' + Id() }">Save</a>
+            </div>
+        </div>
+    </div>
+</div>

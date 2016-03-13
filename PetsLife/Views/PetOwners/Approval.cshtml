@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Pet Aproval";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+}
+<script>var OwnerId = @ViewBag.OwnerId;</script>
+<script src="~/ViewModels/api.js"></script>
+<script src="~/ViewModels/PetOwners/approval.js"></script>
+
+
+<div class="row">
+    <h2 style="text-align:center">Register new Approval</h2>
+</div>
+
+<div class="row row-centered">
+    <div class="col-md-4 col-centered">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Register new Approval</h2>
+            </div>
+            <div class="panel-body" data-bind="with: viewModel">
+                <form id="form" role="form">
+                    <div class="form-group">
+                        <label for="inpOwner">Owner</label>
+                        <select id="inpOwner" class="form-control" data-bind="value: OwnerId, options: Owners, optionsText: 'Name', optionsValue: 'Id', optionsCaption: ' '" required="required"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inpPet">Pet</label>
+                        <select id="inpPet" class="form-control" data-bind="value: PetId, options: Pets, optionsText: 'Name', optionsValue: 'Id', optionsCaption: ' '" required="required"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inpWalker">Walker</label>
+                        <select id="inpWalker" class="form-control" data-bind="value: WalkerId, options: Walkers, optionsText: 'Name', optionsValue: 'Id', optionsCaption: ' '" required="required"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inpOccurence">Occurence</label>
+                        <input id="inpOccurence" type="text" class="form-control" data-bind="value: Occurence" />
+                    </div>
+                    <br />
+
+                    <a class="btn btn-default" onclick="history.go(-1); return false;" href="#">cancel</a>
+                    <a class="btn btn-primary" data-bind="click: save" href="#" >save</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetsLife", "PetsLife\PetsLife.csproj", "{01723C88-9F6B-4792-9007-F95F735C0A36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetsLife.Tests", "PetsLife.Tests\PetsLife.Tests.csproj", "{108D645A-B913-4469-98EC-50D6229901ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80AD6163-98EF-4F70-9A15-15E6E4748908}"
+	ProjectSection(SolutionItems) = preProject
+		readme.txt = readme.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01723C88-9F6B-4792-9007-F95F735C0A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01723C88-9F6B-4792-9007-F95F735C0A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01723C88-9F6B-4792-9007-F95F735C0A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01723C88-9F6B-4792-9007-F95F735C0A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{108D645A-B913-4469-98EC-50D6229901ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108D645A-B913-4469-98EC-50D6229901ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108D645A-B913-4469-98EC-50D6229901ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108D645A-B913-4469-98EC-50D6229901ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

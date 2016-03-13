@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "New Pet";
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+}
+<script>var OwnerId = @ViewBag.OwnerId;</script>
+<script src="~/ViewModels/api.js"></script>
+<script src="~/ViewModels/Pets/New.js"></script>
+
+
+<div class="row">
+    <h2 style="text-align:center">Register new Pet</h2>
+</div>
+
+<div class="row row-centered">
+    <div class="col-md-4 col-centered">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2 class="panel-title">Register new Pet</h2>
+            </div>
+            <div class="panel-body" data-bind="with: viewModel">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="inpName">Name</label>
+                        <input id="inpName" type="text" class="form-control" data-bind="value: Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inpOwner">Owner</label>
+                        <select class="form-control" data-bind="value: OwnerId, options: Owners, optionsText: 'Name', optionsValue: 'Id', optionsCaption: ' '"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inpBirthDate">BirthDate</label>
+                        <input id="inpBirthDate" type="date" class="form-control" data-date-format="yyyy-mm-dd" data-bind="value: BirthDate" />
+                    </div>
+                </form>
+                <br />
+
+                <a class="btn btn-default" onclick="history.go(-1); return false;" href="#">cancel</a>
+                <a class="btn btn-primary" data-bind="click: save" href="#">save</a>
+            </div>
+        </div>
+    </div>
+</div>

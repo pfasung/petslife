@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Pets Life</h1>
+    <p class="lead">Connecting Pet owners with their pet walkers</p>    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Owners Register</h2>
+        <p>
+            Owners Register allows enlisting new Pet Owners along with their pets and managing pet walker approvals.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "PetOwners")">Enter &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Pets Register</h2>
+        <p>Pets Register allows filtering pets by various criteria. In case a pet is lost there is a quick option to delete.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Pets")">Enter &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Walkers Register</h2>
+        <p>Walkers Register allows creating new Pet Walkers and deleting discontinued Pet Walkers.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "PetWalkers")">Enter &raquo;</a></p>
+    </div>
+</div>

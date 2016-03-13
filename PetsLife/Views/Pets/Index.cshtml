@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Pets";
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/moment")
+}
+
+<script src="~/ViewModels/extensions.js"></script>
+<script src="~/ViewModels/api.js"></script>
+<script src="~/ViewModels/Pets/Index.js"></script>
+
+<div class="row">
+    <h2 style="text-align:center">Pets</h2>
+</div>
+
+<div class="row row-centered">
+    <div class="col-md-8 col-centered">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Registered Pets</h2>
+            </div>
+            <div class="panel-body" data-bind="with: viewModel">
+                <form class="form-inline form-horizontal" role="form">
+                    <div class="form-inline">
+                        <label class="control-label" for="inpId">Pet Id</label>
+                        <input id="inpId" type="number" class="form-control" style="width:10%" data-bind="numeric, value: filter.PetId" />
+
+                        <label class="control-label" for="inpAge">Pets under age</label>
+                        <input id="inpAge" type="number" class="form-control" style="width:10%" data-bind="numeric, value: filter.PetAge" />
+
+                        <label for="inpOwner">Owner</label>
+                        <select id="inpOwner" class="form-control" data-bind="value: filter.OwnerId, options: filter.Owners.petOwners, optionsText: 'Name', optionsValue: 'Id', optionsCaption: ' '"></select>
+                    </div>
+                    <table class="col-md-8 table table-striped table-bordered table-condensed" data-bind="with: petListViewModel" style="margin-top: 4%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Owner</th>
+                                <th>BirthDate</th>
+                                <th>Age</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody data-bind="foreach: pets">
+                            <tr>
+                                <td data-bind="text: Id"></td>
+                                <td data-bind="text: Name"></td>
+                                <td data-bind="text: OwnerName"></td>
+                                <td data-bind="text: moment(BirthDate()).format('L')"></td>
+                                <td data-bind="text: Age"></td>
+                                <td>
+                                    <input type="button" class="btn btn-danger btn-xs" value="[x] delete" data-bind="click: $parent.removePet" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+
+                    <input type="submit" class="btn btn-primary" id="btnGetPets" value="Refresh" data-bind="click: petListViewModel.getPets" autofocus="autofocus"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

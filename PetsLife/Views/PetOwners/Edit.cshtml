@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Pet Owner";
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/moment")
+}
+
+<script>var OwnerId = @ViewBag.OwnerId;</script>
+<script src="~/ViewModels/api.js"></script>
+<script src="~/ViewModels/PetOwners/Edit.js"></script>
+
+<div class="row">
+    <h2 style="text-align:center">Pet Owner</h2>
+</div>
+
+<div data-bind="with: viewModel.petOwner">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="panel-title">Pet Owner</h2>
+        </div>
+        <div class="panel-body">
+            <form role="form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inpFirstName">First Name</label>
+                            <input id="inpFirstName" type="text" class="form-control" data-bind="value: FirstName" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="inpLastName">Last Name</label>
+                            <input id="inpLastName" type="text" class="form-control" data-bind="value: LastName" required="required" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inpEmailAddress">Email Address</label>
+                            <input id="inpEmailAddress" type="email" class="form-control" data-bind="value: EmailAddress" required="required"/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>Pets</label>
+                            <table class="table table-striped table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="width:50px">Id</th>
+                                        <th>Name</th>
+                                        <th>BirthDate</th>
+                                        <th style="width:150px"></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody data-bind="foreach: Pets">
+                                    <tr>
+                                        <td data-bind="text: Id"></td>
+                                        <td data-bind="text: Name"></td>
+                                        <td data-bind="text: moment(BirthDate()).format('L')"></td>
+                                        <td>
+                                            <input type="button" class="btn btn-danger btn-xs" value="[x] delete" data-bind="click: $parent.removePet" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a data-bind="attr: { 'href': '@Url.Action("New", "Pets")?ownerId='+Id() }" class="btn btn-default btn-xs">New</a>
+                        </div>
+                        <div class="form-group">
+                            <label>Approvals</label>
+                            <table class="table table-striped table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th style="width:50px">Id</th>
+                                        <th>Pet</th>
+                                        <th>Walker</th>
+                                        <th>Occurence</th>
+                                        <th>Date Approved</th>
+                                        <th style="width:150px"></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody data-bind="foreach: Approvals">
+                                    <tr>
+                                        <td data-bind="text: Id"></td>
+                                        <td data-bind="text: PetName"></td>
+                                        <td data-bind="text: WalkerName"></td>
+                                        <td data-bind="text: Occurence"></td>
+                                        <td data-bind="text: moment(DateApproved()).format('L')"></td>
+                                        <td>
+                                            <input type="button" class="btn btn-danger btn-xs" value="[x] delete" data-bind="click: $parent.removeApproval" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a data-bind="attr: { 'href': '@Url.Action("Approval", "PetOwners")?ownerId='+Id() }" class="btn btn-default btn-xs">New</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br />
+            <a class="btn btn-default" data-bind="attr: { 'href': '@Url.Action("Index", "PetOwners")'}">cancel</a>
+            <a class="btn btn-primary" data-bind="click:save, attr: { 'href': '@Url.Action("Index", "PetOwners")'}" >save</a>
+        </div>
+    </div>
+</div>
